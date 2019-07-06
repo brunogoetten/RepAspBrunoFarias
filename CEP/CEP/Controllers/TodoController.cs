@@ -5,26 +5,42 @@ using System.Threading.Tasks;
 using CEP.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CEP.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Endereco")]
     [ApiController]
-    public class TodoController : ControllerBase
-    {
-        private readonly Context _context;
 
-        public TodoController(Context context)
+        public class ToDoController : ControllerBase
         {
-            _context = context;
+            private readonly Context _context;
 
-            if (_context.endereco.Count() == 0)
+            public ToDoController(Context context)
             {
-                // Create a new TodoItem if collection is empty,
-                // which means you can't delete all TodoItems.
-                _context.endereco.Add(new Endereco { cep = "Item1" });
-                _context.SaveChanges();
+                _context = context;
             }
+
+            [HttpGet("Enderecos")]
+            public IEnumerable<Endereco> MostraTudo()
+            {
+                List<Endereco> enderecos = _context.endereco.ToList();
+                return enderecos;
+            }
+
+            [HttpGet("Enderecos/{cep}")]
+            public IEnumerable<Endereco> MostraCEP(string cep)
+            {
+                var endereco = _context.endereco.Where(s => s.cep == cep);
+                return endereco;
+            }
+
+            [HttpGet("Enderecos/EnderecosPorEstado/{uf}")]
+            public IEnumerable<Endereco> MostraPorEstado(string uf)
+            {
+                List<Endereco> enderecos = _context.endereco.Where(s => s.uf == uf).ToList();
+                return enderecos;
+            }
+
         }
     }
-}
