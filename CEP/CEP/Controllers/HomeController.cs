@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CEP.Models;
 
-//Bruno Augusto Goetten Farias
+//Bruno Augusto Goetten Farias - Projeto AspNet
 
 namespace CEP.Controllers
 {
