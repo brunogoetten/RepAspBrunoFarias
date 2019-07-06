@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CEP.Models;
 
+//Bruno Augusto Goetten Farias
+
 namespace CEP.Controllers
 {
     public class HomeController : Controller

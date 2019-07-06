@@ -7,8 +7,6 @@ using CEP.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-//Bruno Augusto Goetten Farias
-
 namespace CEP.Controllers
 {
     public class EnderecoController : Controller
