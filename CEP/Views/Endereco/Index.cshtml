@@ -1,0 +1,46 @@
+﻿@model IEnumerable<CEP.Models.Endereco>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Consultar CEP</h2>
+<form asp-controller="Endereco" asp-action="ConsultarCEP" method="get">
+    <div style="margin-top:30px" class="container">
+        Digite o CEP:<input type="text" name="cep" /> <br /><br />
+        <input type="submit" class="btn btn-success" value="Consultar e Cadastrar" />
+    </div>
+</form>
+
+<table class="table table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>CEP</th>
+            <th>LOGRADOURO</th>
+            <th>COMPLEMENTO</th>
+            <th>BAIRRO</th>
+            <th>LOCALIDADE</th>
+            <th>UF</th>
+            <th>UNIDADE</th>
+            <th>IBGE</th>
+            <th>GIA</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.cep)</td>
+                <td>@Html.DisplayFor(modelItem => item.logradouro)</td>
+                <td>@Html.DisplayFor(modelItem => item.complemento)</td>
+                <td>@Html.DisplayFor(modelItem => item.bairro)</td>
+                <td>@Html.DisplayFor(modelItem => item.localidade)</td>
+                <td>@Html.DisplayFor(modelItem => item.uf)</td>
+                <td>@Html.DisplayFor(modelItem => item.unidade)</td>
+                <td>@Html.DisplayFor(modelItem => item.ibge)</td>
+                <td>@Html.DisplayFor(modelItem => item.gia)</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
